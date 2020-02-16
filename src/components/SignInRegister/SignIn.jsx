@@ -4,7 +4,7 @@ import {
   HeaderText,
   BasicButton,
   BasicInput,
-  BasicText,
+  Error,
   Loading,
 } from '../common'
 
@@ -12,6 +12,7 @@ export default function SignInRegister() {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [error, setError] = useState()
+  const [showError, setShowError] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const handleSignIn = () => {
@@ -19,6 +20,7 @@ export default function SignInRegister() {
     setError()
     if (!email || !password) {
       setLoading(false)
+      setShowError(true)
       setError('Email and Passord Required')
       return
     }
@@ -27,6 +29,7 @@ export default function SignInRegister() {
       .signInWithEmailAndPassword(email, password)
       .catch(err => {
         setError(err.message)
+        setShowError(true)
         setLoading(false)
       })
   }
@@ -36,7 +39,7 @@ export default function SignInRegister() {
   ) : (
     <>
       <HeaderText text='Sign In' />
-      {error && <BasicText text={error} />}
+      <Error message={error} isVisible={showError} setVisible={setShowError} />
       <BasicInput
         placeholder='email'
         value={email}

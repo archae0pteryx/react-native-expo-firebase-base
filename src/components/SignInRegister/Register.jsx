@@ -1,17 +1,37 @@
 import React, { useState } from 'react'
 import * as firebase from 'firebase'
-import { HeaderText, BasicInput, BasicButton, Loading } from '../common'
+import {
+  HeaderText,
+  BasicInput,
+  BasicButton,
+  Loading,
+  BasicText,
+  Error,
+} from '../common'
 
 export default function SignInRegister() {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [repeatPassword, setRepeatPassword] = useState()
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState()
+  const [error, setError] = useState('')
+  const [showError, setShowError] = useState(false)
 
   const handleRegister = () => {
     setLoading(true)
     setError()
+    if (!email || !password) {
+      setError('email and password required')
+      setShowError(true)
+      setLoading(false)
+      return
+    }
+    if (password !== repeatPassword) {
+      setError('Passwords do not match')
+      setShowError(true)
+      setLoading(false)
+      return
+    }
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -20,9 +40,17 @@ export default function SignInRegister() {
           .database()
           .ref(`users/${user.uid}`)
           .set({ email })
-          .catch(err => setError(err.message))
+          .catch(err => {
+            setLoading(false)
+            setShowError(true)
+            setError(err.message)
+          })
       })
-      .catch(err => setError(err.message))
+      .catch(err => {
+        setLoading(false)
+        setShowError(true)
+        setError(err.message)
+      })
   }
 
   return loading ? (
@@ -30,7 +58,7 @@ export default function SignInRegister() {
   ) : (
     <>
       <HeaderText text='Register' />
-      {error && <BasicText text={error} />}
+      <Error message={error} isVisible={showError} setVisible={setShowError} />
       <BasicInput
         placeholder='email'
         type='emailAddress'
@@ -48,7 +76,7 @@ export default function SignInRegister() {
         type='password'
         placeholder='repeat'
         value={repeatPassword}
-        onChange={setRepeatPassword}
+        handleChange={setRepeatPassword}
         secure
       />
       <BasicButton title='Register' onPress={handleRegister} />
