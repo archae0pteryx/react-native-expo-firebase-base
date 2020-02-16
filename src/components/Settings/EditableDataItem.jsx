@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, Text, TextInput } from 'react-native'
 
-import { BasicText, BasicInput, LittleButton } from '../common'
+import { LittleButton } from '../common'
 
 export default function EditableDataItem(props) {
   const [edit, setEdit] = useState(false)

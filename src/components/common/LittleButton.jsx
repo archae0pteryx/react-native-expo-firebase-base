@@ -18,6 +18,6 @@ export default function LittleButton({ title, onPress, loading = false }) {
 const styles = StyleSheet.create({
   container: {},
   title: {
-    fontSize: 15
+    fontSize: 15,
   },
 })

@@ -65,6 +65,6 @@ export default function Bootstrap() {
       ) : (
         <SignInRegisterScreen />
       )}
-    </SafeAreaView >
+    </SafeAreaView>
   )
 }

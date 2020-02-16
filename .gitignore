@@ -12,5 +12,5 @@ web-report/
 
 # macOS
 .DS_Store
-
+tmp
 secrets.js

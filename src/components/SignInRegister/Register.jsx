@@ -25,7 +25,9 @@ export default function SignInRegister() {
       .catch(err => setError(err.message))
   }
 
-  return loading ? <Loading /> : (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       <HeaderText text='Register' />
       {error && <BasicText text={error} />}

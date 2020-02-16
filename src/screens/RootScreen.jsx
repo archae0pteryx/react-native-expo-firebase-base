@@ -2,11 +2,11 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-const Tab = createBottomTabNavigator()
 import { UserContext } from './context'
 import ProfileScreen from './ProfileScreen'
 import SettingsScreen from './SettingsScreen'
-import { BottomNav } from '../components/common'
+
+const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 
 export default function RootScreen({ authUser, userData }) {

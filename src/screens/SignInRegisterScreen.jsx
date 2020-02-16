@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Text } from 'react-native'
-import { SignIn, Register } from '../components'
+import { SignIn, Register } from '../components/SignInRegister'
 
 export default function SignInRegister() {
   const [register, setRegister] = useState(false)

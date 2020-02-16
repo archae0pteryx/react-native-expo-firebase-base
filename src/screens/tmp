@@ -1,7 +1,0 @@
-            // console.log('File available at', downloadURL)
-            // Create a push reference
-            // const imageRef = firebase
-            //   .database()
-            //   .ref(`users/${user.uid}/images`)
-            //   // .push()
-            // imageRef.set({ imageUrl: downloadURL })

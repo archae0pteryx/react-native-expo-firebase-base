@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import * as firebase from 'firebase'
-import { HeaderText, BasicButton, BasicInput, BasicText, Loading } from '../common'
+import {
+  HeaderText,
+  BasicButton,
+  BasicInput,
+  BasicText,
+  Loading,
+} from '../common'
 
 export default function SignInRegister() {
   const [email, setEmail] = useState()
@@ -25,9 +31,11 @@ export default function SignInRegister() {
       })
   }
 
-  return loading ? <Loading /> : (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
-      <HeaderText text='Sign In'/>
+      <HeaderText text='Sign In' />
       {error && <BasicText text={error} />}
       <BasicInput
         placeholder='email'

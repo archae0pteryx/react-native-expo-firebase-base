@@ -1,4 +1,10 @@
-# React Native Firebase Base.
+# React Native Firebase Base Bolier Plate.
 
-# JUST A REFERENCE! Not fit for production!
-# WORK IN PROGRESS.
+---
+
+All the basic firebase functionality
+- Signin register
+- change password
+- add profile photo
+- add custom datums
+- real time data listeners for instant updates
