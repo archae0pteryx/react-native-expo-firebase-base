@@ -7,7 +7,7 @@ export default function BasicText({ text }) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 10,
+    fontSize: 20,
     margin: 10
   },
 })

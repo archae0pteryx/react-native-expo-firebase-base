@@ -10,6 +10,7 @@ export default function Bootstrap() {
 
   useEffect(() => {
     function handleAuthChange(authUser) {
+      console.log('auth state changed')
       setAuthUser(authUser)
       if (userData === null && authUser !== null) {
         initUserData(authUser.uid)
@@ -21,6 +22,8 @@ export default function Bootstrap() {
 
   const initUserData = uid => {
     const userRef = firebase.database().ref(`users/${uid}`)
+    const imagesRef = firebase.database().ref(`users/${uid}/images`)
+
     userRef
       .once('value', snap => {
         setUserData(snap.val())
@@ -31,12 +34,18 @@ export default function Bootstrap() {
           )
           setUserData(updated)
         })
+        imagesRef.on('child_added', imageData => {
+          console.log('image added fired')
+        })
         userRef.on('child_changed', data => {
           const updated = Object.assign(
             { ...snap.val() },
             { [data.key]: data.val() }
           )
           setUserData(updated)
+        })
+        imagesRef.on('child_changed', imageData => {
+          console.log('image change fired')
         })
         userRef.on('child_removed', data => {
           const updated = Object.assign(
