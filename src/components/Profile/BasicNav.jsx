@@ -2,13 +2,13 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Icon } from 'react-native-elements'
 
-export default function Footer(props) {
+export default function BasicNav(props) {
   return (
     <View style={styles.wrapper}>
       <View style={styles.buttonFlex}>
         <Icon name='home' reverse color='#f50' />
         <Icon name='account-box' reverse color='#f50' />
-        <Icon name='settings' reverse color='#f50' />
+        <Icon name='settings' reverse color='#f50' onPress={() => props.navigation.navigate('Settings')}/>
       </View>
     </View>
   )

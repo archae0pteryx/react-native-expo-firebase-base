@@ -5,7 +5,7 @@ import { ActivityIndicator } from 'react-native'
 import { Image } from 'react-native-elements'
 import { BasicButton, BasicText, HeaderText } from '../components/common'
 import { UserContext } from './context'
-import { Footer } from '../components/Profile'
+import { BasicNav } from '../components/Profile'
 
 export default function ProfileScreen(props) {
   const handlePasswordReset = email => {
@@ -47,7 +47,7 @@ export default function ProfileScreen(props) {
       {({ authUser, userData }) => {
         return userData && (
           <>
-            <HeaderText text='Profile Screen' />
+            <HeaderText text='Profile' />
             <Image
               source={{ uri: userData.images.profile || 'http://fillmurray.com/300/300'}}
               style={{ width: 200, height: 200 }}
@@ -58,7 +58,7 @@ export default function ProfileScreen(props) {
               title='reset password'
               onPress={() => handlePasswordReset(authUser.email)}
             />
-            <Footer navigation={props.navigation} />
+            <BasicNav navigation={props.navigation} />
           </>
         )
       }}
