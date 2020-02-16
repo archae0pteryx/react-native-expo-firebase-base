@@ -5,14 +5,13 @@ import { View, Button, ActivityIndicator, StyleSheet, Text } from 'react-native'
 import { Image } from 'react-native-elements'
 
 export default function ProfileImage({
-  authUser,
   canEdit = false,
   width = '100%',
   height = 300,
 }) {
   const [uploading, setUploading] = useState(false)
+  const user = firebase.auth().currentUser
   const handleUpload = async () => {
-    const user = firebase.auth().currentUser
     const result = await ImagePicker.launchImageLibraryAsync()
     const split = result.uri.split('/')
     const fileName = split[split.length - 1]
@@ -42,7 +41,7 @@ export default function ProfileImage({
   return (
     <View style={styles.container}>
       <Image
-        source={{ uri: authUser.photoURL }}
+        source={{ uri: user.photoURL }}
         style={{ width, height }}
         PlaceholderContent={<ActivityIndicator />}
       />

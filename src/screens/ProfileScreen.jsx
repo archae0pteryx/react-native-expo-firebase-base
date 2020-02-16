@@ -1,26 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 import * as firebase from 'firebase'
-import { BasicButton, BasicText, HeaderText } from '../components/common'
+import { BasicButton, HeaderText, ProfileImage } from '../components/common'
 import { UserContext } from './context'
-import { BasicNav, ProfileImage } from '../components/Profile'
 
-export default function ProfileScreen(props) {
-
-
+export default function ProfileScreen() {
   return (
     <UserContext.Consumer>
-      {({ authUser, userData }) => {
+      {({ userData }) => {
         return (
           userData && (
             <>
               <HeaderText text='Profile' />
-              <ProfileImage authUser={authUser}/>
+              <ProfileImage />
               <HeaderText text={userData.email} />
               <BasicButton
                 title='Sign Out'
                 onPress={() => firebase.auth().signOut()}
               />
-              <BasicNav navigation={props.navigation} />
             </>
           )
         )
