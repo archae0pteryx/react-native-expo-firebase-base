@@ -2,7 +2,8 @@
 
 ---
 
-All the basic firebase functionality
+All the basic firebase functionality using as simple methods as possible
+
 - expo
 - react-native
 - react navigation
@@ -23,6 +24,7 @@ Not tested with android. Not at all styled. Not for production. Mostly use for a
 
 TODO:
 - Testing
+- State Management?
 - Refactor in to a proper pattern
 - Abstract firebase out of components
 - Style
