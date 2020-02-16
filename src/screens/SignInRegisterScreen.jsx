@@ -11,10 +11,10 @@ export default function SignInRegister() {
     <>
       {register ? <Register /> : <SignIn />}
       <Text
-        style={{ color: 'green', textAlign: 'right', marginTop: 20 }}
+        style={{ color: 'green', textAlign: 'right', marginTop: 20, marginRight: 40 }}
         onPress={handleToggle}
       >
-        {register ? 'Sign In' : 'Register'}
+        {register ? 'Sign In' : 'No Account?'}
       </Text>
     </>
   )
